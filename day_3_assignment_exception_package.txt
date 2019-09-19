@@ -1,0 +1,257 @@
+/*Exception ,Package Assignment*/
+
+***********************************************************************************************************************************************
+package exception1;
+
+/*
+* 1)Create abstract base class "Game" with 'play()' as abstract method.
+* From that derive following classes.
+* Football,Cricket,Tennis
+* Create a class called as "GamesDemo" (public class)
+* inside a main method create an array of "Game" (3 elements)
+* Store objects of Football,Cricket and Tennis respectively.
+* Now traverse the array and call that Cricket's play() method.*/
+abstract class game
+{
+	  void play(){}
+	
+}
+class football extends game
+{
+	void play()
+	{
+		System.out.println("in football");
+	}
+}
+class cricket extends game
+{
+	void play()
+	{
+	System.out.println("in cricket");	
+	}
+	public void test()
+	{
+		System.out.println("In A test match");
+	}
+}
+class tennis extends game
+{
+	void play()
+	{
+	System.out.println("in tennis");
+	}
+	
+}
+public class assign1//gamedemo
+{
+	
+	
+	
+	public static void main(String[] args)
+	{
+		
+		game g[]= new game[4];
+		g[0]= new tennis();
+		g[1]= new cricket();
+		g[2]= new football();
+		
+		for(int i=0;i<g.length;i++)
+		{	
+			if(g[i] instanceof cricket)
+			{
+		
+			g[i].play();
+			}
+	}
+}}
+***********************************************************************************************************************************************
+package exception1;
+
+/*2) define your exception class by name "MyArithException"
+(MyArithException.java)
+define class "Calculator"   (Calculator.java)
+In this class define a function,which will accept an int and return double of it.
+e.g int caldouble(int)
+This function will check an int which is passed to it
+It will throw exception if 0 is passed or negative passed
+in case of 0 caller of this method should get error message
+"Zero not allowed" 
+in case of negative caller of this method should get error message
+"negative not allowed"
+In case of positive value it should simply return the double value.
+
+Now define class "MyCalcApp" (MyCalcApp.java)
+In this class you accept a number from user and pass that no. to
+caldouble() method which is mentioned above.*/
+import java.util.Scanner;
+
+class MyArithException extends Exception 
+{
+	// String msg;
+	public MyArithException(String msg)
+	{
+		super(msg);
+	}
+
+	
+}
+class Calculator
+{   //int a; 
+	public int a;
+	int calDouble(int a) throws MyArithException
+	{
+	if(a<=0)
+	{
+		throw new MyArithException("Input less than zero");
+	}
+	else
+	{
+		return a*2;
+	}
+}
+	
+}
+
+public class Assign2 
+{ 
+	public static void main(String[] args)
+	{
+	try
+	{	Scanner input= new Scanner(System.in); 
+	
+		Calculator c= new Calculator();
+	
+		System.out.println("enter a digit");
+		 int a = input.nextInt();
+	
+		 int result=c.calDouble(a);
+		
+		 System.out.println(result);
+	}
+    catch( MyArithException e)
+    {
+    	e.printStackTrace();
+    }
+	
+	}
+}
+***********************************************************************************************************************************************
+
+
+
+***********************************************************************************************************************************************
+
+/*3)create a package called "course"
+In this package create three classes
+a) Dac    with methods  term1()  and term2()
+b) PreDac with  method  cet()
+c) Basic   with method  finalTest()
+Now write application called  "VitaApp" in which call all the methods  of the above mentioned classes*/
+
+
+/*class basic*/
+package course;
+
+public class basic {
+	public void finaltest()
+	{
+		System.out.println("In finaltest");
+	}
+
+}
+
+
+/*class dac*/
+package course;
+
+public class dac {
+	
+	public void term1()
+	{
+		System.out.println("In term1");
+	}
+	public void term2()
+	{
+		System.out.println("In term2");
+	}
+
+}
+/*class predac*/
+package course;
+
+public class predac {
+	public void cet()
+	{
+		System.out.println("In cet");
+	}
+
+}
+
+/*VitaApp*/
+package course;
+
+public class VitaApp
+{	
+	public static void main(String[] args)
+	{
+		dac d= new dac();
+		basic b = new basic();
+		predac pd = new predac();
+		d.term1();
+		d.term2();
+		b.finaltest();
+		pd.cet();
+	}
+}
+
+
+***********************************************************************************************************************************************
+
+
+
+
+***********************************************************************************************************************************************
+package exception1;
+/*4)define a class called as "Item" (Item.java)
+with members
+String itemid;
+String name;
+int cost;
+
+parameterized constructor which will accept above details at the time
+of creating object.
+	member function
+void display()
+which will display all the details of product
+create instances of this class and call the method display.*/
+
+
+public class Item
+{
+	String itemid;
+	String name;
+	int cost;
+	
+	Item(String itemid,String name,int cost)
+	{
+		this.itemid=itemid;
+		this.name=name;
+		this.cost=cost;
+	}
+ public void disp()
+ {
+	 System.out.println("itemid = "+itemid);
+	 System.out.println("itemid = "+name);
+	 System.out.println("itemid = "+cost);
+ }
+
+ public static void main(String[] args) 
+	{
+	Item i = new Item("a","abc",123);
+	i.disp();
+	//i.disp("a","abc",123);
+	}
+}
+
+
+***********************************************************************************************************************************************
